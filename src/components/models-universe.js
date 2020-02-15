@@ -7,7 +7,9 @@ module.exports = {
         geometryInitArgs: [29, 32, 32],
         material: 'MeshStandardMaterial',
         materialInitArgs: [{ color: 0xff0000 }],
-        textureUrl: '/static/textures/sun.jpg'
+        textureUrl: process.env.NODE_ENV === 'production'
+          ? '/hello-earth/static/textures/sun.jpg'
+          : '/static/textures/sun.jpg'
       },
       light: {
         type: 'createModel',
@@ -32,7 +34,9 @@ module.exports = {
         geometryInitArgs: [5, 32, 32],
         // geometryInitArgs: [0.25, 32, 32],
         material: 'MeshStandardMaterial',
-        textureUrl: '/static/textures/earth.jpg',
+        textureUrl: process.env.NODE_ENV === 'production'
+          ? '/hello-earth/static/textures/earth.jpg'
+          : '/static/textures/earth.jpg',
         attributes: {
           castShadow: true,
           receiveShadow: true
