@@ -91,9 +91,16 @@ export default {
     this.createRevolutionCurve()
     this.toggleRotation()
     this.toggleRevolution()
+    window.addEventListener('resize', this.onWindowResize, false)
   },
 
   methods: {
+    onWindowResize () {
+      this.camera.aspect = window.innerWidth / window.innerHeight
+      this.camera.updateProjectionMatrix()
+      this.renderer.setSize( window.innerWidth, window.innerHeight )
+    },
+
     animate () {
       this.renderer.render(this.scene, this.camera)
       requestAnimationFrame(this.animate)
